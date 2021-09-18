@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 
 class Server {
     constructor() {
@@ -12,14 +13,13 @@ class Server {
 
     middlewares() {
         this.app.use(express.static('public'));
+        this.app.use(cors());
+        this.apiUsuarios = '/api/usuarios'; // aqui solo declaramos la ruta como variable.
     }
 
     routes() {
-        this.app.get('/api', (req, res) => {
-            res.send('Hola, estamos en el server.js ;)');
-        })
+        this.app.use(this.apiUsuarios, require('../routes/routes'));
     }
-
     listen() {
         this.app.listen(process.env.PORT, () => {
             console.log(`Esta app esta corriendo en el puerto ${process.env.PORT}`);

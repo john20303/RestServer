@@ -1,3 +1,6 @@
-# 1 creamos nuestro archivo .env y asi creamos nuestra variables de entorno, en este caso nuestro puerto
-# 2 Creamos el archivo llamado server.js y asi creamos la clase de nuestro proyecto.
-# 3 
+
+# 1 index.js
+# 2 carpeta models/server.js
+# 3 carpeta routes/routes.js
+# 4 carpeta controller/controller.js
+# 5 
