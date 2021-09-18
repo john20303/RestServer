@@ -1,18 +1,27 @@
 const controllerGet = (req, res) => {
+    const query = req.query;
     res.json({
-        msg: "get-api-Controller"
+        msg: "get-api-Controller",
+        query
     });
 }
 
 const controllerPost = (req, res) => {
+    // const { nombre, apellido } = req.body; // De esta manera hacemos que la petición nos regrese solo lo que queremos.
+    const body = req.body;
     res.json({
-        msg: "post-api-Controller"
+        msg: "post-api-Controller",
+        body
+        // nombre,
+        // apellido
     });
 }
 
 const controllerPut = (req, res) => {
+    const { id } = req.params;
     res.json({
-        msg: "put-api-Controller"
+        msg: "put-api-Controller",
+        id
     });
 }
 

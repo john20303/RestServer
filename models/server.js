@@ -15,6 +15,7 @@ class Server {
         this.app.use(express.static('public'));
         this.app.use(cors());
         this.apiUsuarios = '/api/usuarios'; // aqui solo declaramos la ruta como variable.
+        this.app.use(express.json());
     }
 
     routes() {

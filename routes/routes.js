@@ -8,11 +8,11 @@ router.get('/', controllerGet);
 
 router.post('/', controllerPost);
 
-router.put('/', controllerPut);
+router.put('/:id', controllerPut);
 
-router.delete('/', controllerDelete);
+router.delete('/:id', controllerDelete);
 
-router.patch('/', controllerPatch);
+router.patch('/:id', controllerPatch);
 
 
 
