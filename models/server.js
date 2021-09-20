@@ -1,9 +1,14 @@
 const express = require('express');
 const cors = require('cors');
 
+
+
 class Server {
+    conn = require('../database/config');
     constructor() {
         this.app = express();
+        this.apiUsuarios = '/api/usuarios'; // aqui solo declaramos la ruta como variable.
+        this.conn();
         // middlewares
         this.middlewares();
         // Rutas 
@@ -14,9 +19,9 @@ class Server {
     middlewares() {
         this.app.use(express.static('public'));
         this.app.use(cors());
-        this.apiUsuarios = '/api/usuarios'; // aqui solo declaramos la ruta como variable.
         this.app.use(express.json());
     }
+
 
     routes() {
         this.app.use(this.apiUsuarios, require('../routes/routes'));
