@@ -4,4 +4,7 @@
 # 3 carpeta routes/routes.js
 # 4 carpeta controller/controller.js
 # 5 Carpeta database/config.js
-#
+# 6 Carpeta models
+# 7 Carpeta middlewares
+# 8 Carpeta helpers
+

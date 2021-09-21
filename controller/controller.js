@@ -12,16 +12,16 @@ const controllerGet = (req, res) => {
 }
 
 const controllerPost = async(req, res) => {
+
     // const { nombre, apellido } = req.body; // De esta manera hacemos que la petición nos regrese solo lo que queremos.
     const { nombre, correo, password, rol, } = req.body;
     const usuario = new Usuario({ nombre, correo, password, rol, });
-
-    // Validar correo
 
 
     // Encriptando la contraseña
     const salt = bcrypt.genSaltSync(10);
     usuario.password = bcrypt.hashSync(password, salt);
+
 
     // Guardar en base de datos
     await usuario.save();
