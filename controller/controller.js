@@ -3,12 +3,17 @@ const bcrypt = require('bcryptjs');
 
 
 
-const controllerGet = (req, res) => {
-    const query = req.query;
-    res.json({
-        msg: "get-api-Controller",
-        query
-    });
+
+
+
+// Get
+const controllerGet = async(req, res) => {
+    const { limit = 5, desde = 0 } = req.query;
+    const usuarios = await Usuario.find()
+        .skip(desde)
+        .limit(Number(limit));
+    const total = await Usuario.countDocuments();
+    res.json({ total, usuarios });
 }
 
 
@@ -51,10 +56,7 @@ const controllerPut = async(req, res) => {
         resto.password = bcrypt.hashSync(password, salt);
     }
     const usuario = await Usuario.findByIdAndUpdate(id, resto);
-    res.json({
-        msg: "put-api-Controller",
-        usuario
-    });
+    res.json(usuario);
 }
 
 
