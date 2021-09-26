@@ -11,6 +11,11 @@ const controllerGet = (req, res) => {
     });
 }
 
+
+
+
+
+// Post
 const controllerPost = async(req, res) => {
 
     // const { nombre, apellido } = req.body; // De esta manera hacemos que la petición nos regrese solo lo que queremos.
@@ -30,25 +35,56 @@ const controllerPost = async(req, res) => {
     });
 }
 
-const controllerPut = (req, res) => {
+
+
+
+
+// Put
+const controllerPut = async(req, res) => {
     const { id } = req.params;
+    const { password, google, correo, ...resto } = req.body;
+    // TODO validar contra base de datos!
+
+    if (password) {
+        // Encriptando la contraseña
+        const salt = bcrypt.genSaltSync(10);
+        resto.password = bcrypt.hashSync(password, salt);
+    }
+    const usuario = await Usuario.findByIdAndUpdate(id, resto);
     res.json({
         msg: "put-api-Controller",
-        id
+        usuario
     });
 }
 
+
+
+
+
+// Delete
 const controllerDelete = (req, res) => {
     res.json({
         msg: "delete-api-Controller"
     });
 }
 
+
+
+
+
+
+// Patch
 const controllerPatch = (req, res) => {
     res.json({
         msg: "patch-api-Controller"
     });
 }
+
+
+
+
+
+
 
 
 module.exports = {

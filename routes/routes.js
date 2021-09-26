@@ -3,11 +3,14 @@ const { check } = require("express-validator");
 const { controllerGet, controllerPost, controllerPut, controllerDelete, controllerPatch } = require("../controller/controller");
 const router = Router();
 const { validarCampos } = require('../middlewares/validar-campos');
-const { esRolValido, validarEmail } = require('../helpers/db-validators');
+const { esRolValido, validarEmail, existeUsuarioId } = require('../helpers/db-validators');
 
-
+// Get
 router.get('/', controllerGet);
 
+
+
+// Post
 router.post('/', [
     check('nombre', 'El nombre es obligatorio').not().isEmpty(),
     check('correo', 'El correo no es válido!').isEmail(),
@@ -18,10 +21,28 @@ router.post('/', [
     validarCampos
 ], controllerPost);
 
-router.put('/:id', controllerPut);
 
+
+
+// Put
+router.put('/:id', [
+    check('id', 'No es un id válido!').isMongoId(),
+    check('id').custom(existeUsuarioId),
+    check('rol').custom(esRolValido),
+    validarCampos
+], controllerPut);
+
+
+
+
+// Delete
 router.delete('/:id', controllerDelete);
 
+
+
+
+
+// Patch
 router.patch('/:id', controllerPatch);
 
 
