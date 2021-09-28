@@ -64,23 +64,13 @@ const controllerPut = async(req, res) => {
 
 
 // Delete
-const controllerDelete = (req, res) => {
-    res.json({
-        msg: "delete-api-Controller"
-    });
+const controllerDelete = async(req, res) => {
+    const { id } = req.params;
+    const usuario = await Usuario.findByIdAndUpdate(id, { estado: false });
+    res.json(usuario);
 }
 
 
-
-
-
-
-// Patch
-const controllerPatch = (req, res) => {
-    res.json({
-        msg: "patch-api-Controller"
-    });
-}
 
 
 
@@ -93,6 +83,5 @@ module.exports = {
     controllerGet,
     controllerPost,
     controllerPut,
-    controllerDelete,
-    controllerPatch
+    controllerDelete
 }
