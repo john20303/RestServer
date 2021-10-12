@@ -1,5 +1,6 @@
 const Usuario = require('../models/user');
 const bcrypt = require('bcrypt');
+const {generarJWT} = require("../helpers/generar_JWT");
 
 const controllerLogin = async (req, res) => {
 
@@ -31,8 +32,11 @@ const controllerLogin = async (req, res) => {
         }
 
         //    Generar JWT
+        const token = await generarJWT(usuario.id);
+
         res.json({
-            msg: "Login ok"
+            msg: usuario,
+            token
         })
 
 
