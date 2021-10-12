@@ -76,10 +76,7 @@ const controllerDelete = async(req, res) => {
 
 
 
-
-
-
-module.exports = {
+    module.exports = {
     controllerGet,
     controllerPost,
     controllerPut,

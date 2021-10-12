@@ -2,15 +2,22 @@ const express = require('express');
 const cors = require('cors');
 
 
-
 class Server {
     conn = require('../database/config');
+
     constructor() {
         this.app = express();
+
+        //Endpoints
         this.apiUsuarios = '/api/usuarios'; // aqui solo declaramos la ruta como variable.
+        this.auth = '/api/auth'; // este es nuestro endpoint del login!
         this.conn();
-        // middlewares
+
+
+        // Middlewares
         this.middlewares();
+
+
         // Rutas 
         this.routes();
         this.listen();
@@ -24,8 +31,10 @@ class Server {
 
 
     routes() {
+        this.app.use(this.auth, require('../routes/auth'));
         this.app.use(this.apiUsuarios, require('../routes/routes'));
     }
+
     listen() {
         this.app.listen(process.env.PORT, () => {
             console.log(`Esta app esta corriendo en el puerto ${process.env.PORT}`);
