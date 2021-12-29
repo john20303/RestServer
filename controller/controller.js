@@ -1,9 +1,6 @@
 const Usuario = require('../models/user');
 const bcrypt = require('bcryptjs');
-
-
-
-
+const { response } = require('express');
 
 
 // Get
@@ -15,9 +12,6 @@ const controllerGet = async(req, res) => {
     const total = await Usuario.countDocuments();
     res.json({ total, usuarios });
 }
-
-
-
 
 
 // Post
@@ -41,9 +35,6 @@ const controllerPost = async(req, res) => {
 }
 
 
-
-
-
 // Put
 const controllerPut = async(req, res) => {
     const { id } = req.params;
@@ -60,23 +51,17 @@ const controllerPut = async(req, res) => {
 }
 
 
-
-
-
 // Delete
-const controllerDelete = async(req, res) => {
+const controllerDelete = async(req, res = response) => {
     const { id } = req.params;
     const usuario = await Usuario.findByIdAndUpdate(id, { estado: false });
-    res.json(usuario);
+    res.json({
+        usuario
+    });
 }
 
 
-
-
-
-
-
-    module.exports = {
+module.exports = {
     controllerGet,
     controllerPost,
     controllerPut,
