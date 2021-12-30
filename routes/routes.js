@@ -5,6 +5,7 @@ const { controllerGet, controllerPost, controllerPut, controllerDelete } = requi
 const { validarCampos } = require('../middlewares/validar-campos');
 const { esRolValido, validarEmail, existeUsuarioId } = require('../helpers/db-validators');
 const { validarJWT } = require("../middlewares/validar-JWT");
+const { tieneRol, esAdminRol } = require("../middlewares/validar-rol");
 
 // Get
 router.get('/', controllerGet);
@@ -38,6 +39,8 @@ router.put('/:id', [
 // Delete
 router.delete('/:id', [
     validarJWT,
+    tieneRol('ADMIN_ROLE', 'VENTAS_ROLE', 'USER_ROLE'),
+    // esAdminRol,
     check('id', 'No es un id válido!').isMongoId(),
     check('id').custom(existeUsuarioId),
     validarCampos

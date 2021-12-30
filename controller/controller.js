@@ -55,6 +55,7 @@ const controllerPut = async(req, res) => {
 const controllerDelete = async(req, res = response) => {
     const { id } = req.params;
     const usuario = await Usuario.findByIdAndUpdate(id, { estado: false });
+    // const userAuthenticated = req.user;
     res.json({
         usuario
     });
