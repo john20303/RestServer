@@ -4,16 +4,16 @@ const Rol = require('../models/role');
 const esAdminRol = async(req, res, next) => {
 
 
-    if (!req.user) {
+    if (!req.usuario) {
         res.status(500).json({
             ok: false,
             msg: 'No se puede válidar el rol antes de JWT.'
         });
     }
 
-    const { rol, nombre } = req.user;
+    const { rol, nombre } = req.usuario;
 
-    if (rol !== 'USER_ROLEX') {
+    if (rol !== 'ADMIN_ROLE') {
         res.status(401).json({
             ok: false,
             msg: `El usuario ${nombre} no es administrador.`
@@ -27,10 +27,10 @@ const esAdminRol = async(req, res, next) => {
 const tieneRol = (...roles) => {
 
     return (req, res, next) => {
-        const { nombre, rol } = req.user;
+        const { nombre, rol } = req.usuario;
 
         // Validamos si el user tiene un rol
-        if (!req.user) {
+        if (!req.usuario) {
             res.status(500).json({
                 ok: false,
                 msg: 'No se puede válidar el rol antes que el token'

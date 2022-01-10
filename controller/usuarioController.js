@@ -1,9 +1,9 @@
-const Usuario = require('../models/user');
+const Usuario = require('../models/usuario');
 const bcrypt = require('bcryptjs');
 const { response } = require('express');
 
 
-// Get
+// Get Usuarios
 const controllerGet = async(req, res) => {
     const { limit = 5, desde = 0 } = req.query;
     const usuarios = await Usuario.find()
@@ -14,7 +14,7 @@ const controllerGet = async(req, res) => {
 }
 
 
-// Post
+// Post  Usuarios
 const controllerPost = async(req, res) => {
 
     // const { nombre, apellido } = req.body; // De esta manera hacemos que la petición nos regrese solo lo que queremos.
@@ -35,7 +35,7 @@ const controllerPost = async(req, res) => {
 }
 
 
-// Put
+// Put Usuario
 const controllerPut = async(req, res) => {
     const { id } = req.params;
     const { password, google, correo, ...resto } = req.body;
@@ -51,7 +51,7 @@ const controllerPut = async(req, res) => {
 }
 
 
-// Delete
+// Delete Usuario
 const controllerDelete = async(req, res = response) => {
     const { id } = req.params;
     const usuario = await Usuario.findByIdAndUpdate(id, { estado: false });

@@ -1,7 +1,9 @@
 const Rol = require('../models/role');
-const Usuario = require('../models/user');
+const Usuario = require('../models/usuario');
+const Categoria = require('../models/categoria');
+const res = require('express/lib/response');
 
-
+// Validamos si existe el rol
 const esRolValido = async(rol = '') => {
 
     const existeRol = await Rol.findOne({ rol });
@@ -10,6 +12,8 @@ const esRolValido = async(rol = '') => {
     }
 }
 
+
+// Validamos si el email  tiene el formato correcto
 const validarEmail = async(correo = '') => {
     // Validar correo
     const existeEmail = await Usuario.findOne({ correo });
@@ -18,6 +22,9 @@ const validarEmail = async(correo = '') => {
     }
 }
 
+
+
+// Válidamos si existe el id del usuario
 const existeUsuarioId = async(id) => {
     // Validar usuario id
     const existeId = await Usuario.findById(id);
@@ -26,8 +33,20 @@ const existeUsuarioId = async(id) => {
     }
 }
 
+
+
+
+// Válidamos si existe una categoria con ese id
+const ExisteCategoriaPorId = async(id) => {
+    const categoria = await Categoria.findById(id);
+    if (!categoria || !categoria.name) {
+        throw new Error(`El categoria con el id: ${id} no existe.`)
+    }
+}
+
 module.exports = {
     esRolValido,
     validarEmail,
-    existeUsuarioId
+    existeUsuarioId,
+    ExisteCategoriaPorId
 }
