@@ -87,14 +87,8 @@ const getCategoriaById = async(req, res) => {
         const { id } = req.params;
 
         // Validamos su el id que viene por la request existe
-        const categoria = await Categoria.findById(id).populate('usuario', 'nombre');
-
-        if (!categoria.estado) {
-            return res.status(404).json({
-                ok: false,
-                msg: "la categoria no existe."
-            })
-        }
+        const categoria = await Categoria.findById(id)
+            .populate('usuario', 'nombre');
 
         // Creamos la respuesta exitosa.
         res.status(200).json({
@@ -123,7 +117,7 @@ const putCategoria = async(req, res) => {
         data.usuario = req.usuario;
 
         // Definimos la data a actualizar.
-        const categoria = await Categoria.findByIdAndUpdate(id, data).populate('usuario', 'nombre'); //Con el populate traemos el nombre  
+        const categoria = await Categoria.findByIdAndUpdate(id, data); //Con el populate traemos el nombre  
         // Guardamos la data en base de datos
         categoria.save();
 
@@ -147,9 +141,10 @@ const deleteCategoria = async(req, res) => {
     try {
         const { id } = req.params;
         // Buscamos la categoria  la borramos/le damos el estado false.
-        const borrarCategoria = await Categoria.findByIdAndUpdate(id, { estado: false }).populate('usuario', 'nombre');
+        const borrarCategoria = await Categoria.findByIdAndUpdate(id, { estado: false });
         // Generamos la respuesta exitosa.
         res.status(200).json(borrarCategoria);
+
     } catch (error) {
         console.log(error);
         res.status(404).json({

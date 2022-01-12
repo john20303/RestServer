@@ -7,10 +7,10 @@ const { validarJWT } = require('../middlewares/validar-JWT');
 const { ExisteCategoriaPorId } = require('../helpers/db-validators');
 const { esAdminRol } = require('../middlewares/validar-rol');
 
-// Solo un usuario con un JWT válido
+// Solo un usuario con un JWT válido Puede crear una categoria
 router.post('/', [
     validarJWT,
-    check('nombre', 'El nombre es obligatorio').not().isEmpty(),
+    check('nombre', 'El campo nombre es obligatorio').not().isEmpty(),
     validarCampos
 ], postCrearCategoria);
 

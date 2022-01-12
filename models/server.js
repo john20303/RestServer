@@ -12,6 +12,7 @@ class Server {
         this.apiUsuarios = '/api/usuarios'; // aqui solo declaramos la ruta como variable.
         this.auth = '/api/auth'; // este es nuestro endpoint del login!
         this.apiCategorias = '/api/categoria'; //Esta es la api de categorias
+        this.apiProducto = '/api/producto';
         this.conn();
 
 
@@ -35,6 +36,7 @@ class Server {
         this.app.use(this.auth, require('../routes/auth'));
         this.app.use(this.apiUsuarios, require('../routes/usuario'));
         this.app.use(this.apiCategorias, require('../routes/categorias'));
+        this.app.use(this.apiProducto, require('../routes/producto'));
     }
 
     listen() {
