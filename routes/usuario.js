@@ -16,7 +16,9 @@ router.post('/', [
     check('nombre', 'El nombre es obligatorio').not().isEmpty(),
     check('correo', 'El correo no es válido!').isEmail(),
     check('correo').custom(validarEmail),
-    check('password', 'El password debe ser de mas de 6 letras').not().isEmpty().isLength({ min: 6 }),
+    check("password", "Por favor ingrese un password al menos de  8 caracteres una mayúscula una minúscula un carácter especial y un dígito.")
+    .isLength({ min: 8 })
+    .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z\d@$.!%*#?&]/, ),
     // check('rol', 'No es un rol válido!').isIn(['ADMIN_ROLE', 'USER_ROLE']), //aqui podemos validar los roles con lo que tengamos en el array.
     check('rol').custom(esRolValido),
     validarCampos
