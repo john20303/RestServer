@@ -14,6 +14,7 @@ class Server {
         this.apiCategorias = '/api/categoria'; //Esta es la api de categorias
         this.apiProducto = '/api/producto';
         this.apiBuscar = '/api/buscar';
+
         this.conn();
 
 
@@ -38,7 +39,7 @@ class Server {
         this.app.use(this.apiUsuarios, require('../routes/usuario'));
         this.app.use(this.apiCategorias, require('../routes/categorias'));
         this.app.use(this.apiProducto, require('../routes/producto'));
-        this.app.use(this.apiBuscar, require('../routes/buscar'));
+        // this.app.use(this.apiBuscar, require('../routes/buscar'));
     }
 
     listen() {

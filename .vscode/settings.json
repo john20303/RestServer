@@ -20,6 +20,7 @@
         "buqueda",
         "Buscamos",
         "Buscar",
+        "búsqueda",
         "Capitalizamos",
         "caregoria",
         "carpeta",
@@ -28,7 +29,10 @@
         "categorias",
         "Categtoria",
         "coleccion",
+<<<<<<< HEAD
         "colecciones",
+=======
+>>>>>>> john-2
         "Conectado",
         "Conectar",
         "conectarnos",
@@ -39,6 +43,7 @@
         "corresponde",
         "corriendo",
         "Creamos",
+        "Crear",
         "creo",
         "criterio",
         "cual",
@@ -50,8 +55,10 @@
         "debe",
         "declaramos",
         "Definimos",
+        "dejámos",
         "descripcion",
         "desde",
+        "Desestructuramos",
         "desestructurar",
         "Desestructurarmos",
         "dicho",
@@ -69,12 +76,14 @@
         "estado",
         "estamos",
         "estar",
+        "éstas",
         "existan",
         "existe",
         "existen",
         "existencia",
         "existosa",
         "exitosa",
+        "expreción",
         "extremos",
         "formato",
         "función",
@@ -115,12 +124,20 @@
         "Obtener",
         "obviar",
         "olbligatorio",
+<<<<<<< HEAD
         "Olvido",
+=======
+        "ólvide",
+>>>>>>> john-2
         "paginacón",
         "páginado",
         "pasamos",
         "permisos",
+<<<<<<< HEAD
         "permitidas",
+=======
+        "Permitidas",
+>>>>>>> john-2
         "pertenece",
         "petición",
         "peticiones",
@@ -139,7 +156,11 @@
         "regresara",
         "regrese",
         "requerida",
+<<<<<<< HEAD
         "resgistro",
+=======
+        "respuesta",
+>>>>>>> john-2
         "resto",
         "Restserver",
         "resultados",

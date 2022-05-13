@@ -104,7 +104,7 @@ const productoGetById = async(req, res) => {
             .populate('categoria', 'nombre');
 
         if (!producto.estado) {
-            return res.status(404).json({
+            return res.json({
                 ok: false,
                 msg: `El producto ${producto.nombre} ha sido eliminado.`
             })
